@@ -8,6 +8,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { MaterialModule } from 'src/app/material.module';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     LoginComponent,
     RegisterComponent,
     LandingComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    ContactUsComponent
   ],
   imports: [
     CommonModule,

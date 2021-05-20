@@ -15,45 +15,122 @@
     top: 0;
     z-index: 1;
   }
-  
-  .mat-toolbar a {
-      text-decoration: none;
-      margin-left: 25px;
-      font-size: 50px;
-      color: pink;
-  }
-  
-  .mat-toolbar a:active, .mat-toolbar a:hover {
-    outline: none;
-  }
-
-  .mat-toolbar a:hover {
-    transition: 0.5s ease;
-    color: #fff;
-  }
-
-  .mat-nav-list a {
-    font-weight: bold;
-    color: #fff;
-  }
-
-  .mat-nav-list a:hover {
-    transition: 0.5s ease;
-    color: yellow;
-    cursor: pointer;
-    box-shadow: 0 3px 6px #fff, 0 3px 6px #fff;
-  }
-
-  .mat-nav-list a:active {
-    color: yellow;
-  }
 
   .mat-toolbar.mat-primary {
-      background: black !important;
+    background: black !important;
   }
 
-  .sidenav {
-    background: #303030 !important;
+  .sidenav-container {
+    background: linear-gradient(to top right, black, grey, #696969, grey, black);
+    .sidenav {
+      background: #303030 !important;
+      overflow: hidden;
+      mat-toolbar {
+        span {
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 50px;
+            color: #fff;
+            &:hover {
+              cursor: pointer;
+              color: greenyellow;
+              transition: 0.3s ease;
+            }
+        }
+      }
+      mat-nav-list {
+        a {
+          font-weight: bold;
+          color: #fff;
+          &:hover {
+            transition: 0.5s ease;
+            color: greenyellow;
+            cursor: pointer;
+            box-shadow: 0 3px 6px #fff, 0 3px 6px #fff;
+            background: black;
+          }
+        }
+        footer {
+          position: absolute;
+          bottom: 10px;
+          width: 100%;
+          text-align: center;
+          color: #fff;
+        }
+      }
+    }
+    mat-sidenav-content {
+      mat-toolbar {
+        .logsign {
+          width: 100%;
+          .logbtn, .signbtn {
+            float: right;
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 10px;
+          }
+          .logbtn {
+            background: #fff;
+            color: black;
+            &:hover {
+              background: black;
+              color: greenyellow;
+              transition: 0.5s ease-in-out;
+            }
+          }
+          .signbtn {
+            color: greenyellow;
+            &:hover {
+              transition: 0.5s ease;
+              color: black;
+              background: greenyellow;
+            }
+          }
+        }
+      }
+      .landing-content {
+        text-align: center;
+        padding-top: 30px;
+        width: 100%;
+        mat-card-content {
+          mat-card-title {
+            font-size: 50px;
+            color: turquoise;
+            font-weight: bold;
+          }
+          .img {
+            margin: 10px 0px;
+            width: 400px;
+            height: 400px;
+          }
+          mat-card-subtitle {
+            font-weight: bold;
+            font-style: italic;
+            font-size: 20px;
+            color: #fff;
+            line-height: 1.5;
+          }
+          mat-card-actions {
+            button {
+              margin: 10px 0px;
+              border-radius: 5%;
+              border: 5px solid #fff;
+              font-weight: bold;
+              font-size: 16px;
+              background: black;
+              color: #fff;
+              &:hover {
+                transition: 0.5s ease;
+                border: 5px solid yellowgreen;
+                color: yellowgreen;
+              }
+            }
+          }
+        }
+      }
+    }
   }
+
+  
 
   
