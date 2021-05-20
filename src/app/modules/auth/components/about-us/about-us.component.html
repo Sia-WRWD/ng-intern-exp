@@ -1,5 +1,5 @@
-<div class="admins" #top>
-    <div class="admin">
+<div class="admins" #start>
+    <div class="admin first">
         <!--S1@-->
         <div class="pp">
             <img src="../../../../../assets/ayaya.PNG" alt="pp-1">
@@ -22,10 +22,10 @@
             <!--Reddit-->
         </div>
         <br>
-        <button (click)="scrollNext(admin)" mat-button id="next-section"><i class="fas fa-arrow-down"></i></button>
+        <button (click)="scrollNext(admin2)" mat-button class="next-section-1"><i class="fas fa-arrow-down"></i></button>
     </div>
 
-    <div class="admin" #admin>
+    <div class="admin second" #admin2>
         <!--Ir4un-->
         <div class="pp">
             <img src="../../../../../assets/irfan.jpg" alt="pp-2">
@@ -43,9 +43,11 @@
             <li><a href="https://www.reddit.com/user/ir4un" target="_blank"><i class="fab fa-reddit"></i></a></li>
             <!--Reddit-->
         </div>
+        <br>
+        <button (click)="scrollNext(admin3)" mat-button class="next-section-2"><i class="fas fa-arrow-down"></i></button>
     </div>
 
-    <div class="admin" #admin>
+    <div class="admin third" #admin3>
         <div class="pp">
             <img src="../../../../../assets/pr3m.PNG" alt="pp-3">
         </div>
@@ -62,9 +64,11 @@
             <li><a href="https://www.reddit.com/user/ir4un" target="_blank"><i class="fab fa-reddit"></i></a></li>
             <!--Reddit-->
         </div>
+        <br>
+        <button (click)="scrollNext(admin4)" mat-button class="next-section-3"><i class="fas fa-arrow-down"></i></button>
     </div>
 
-    <div class="admin" #admin>
+    <div class="admin fourth" #admin4>
         <div class="pp">
             <img src="../../../../../assets/ry@n.PNG" alt="pp-4">
         </div>
@@ -81,9 +85,10 @@
             <li><a href="https://www.reddit.com/user/ir4un" target="_blank"><i class="fab fa-reddit"></i></a></li>
             <!--Reddit-->
         </div>
+        <button (click)="scrollNext(top)" mat-button class="next-section-4"><i class="fas fa-arrow-down"></i></button>
     </div>
-    <button (click)="scrollTop(top)" mat-button class="first-section">
-        <p>
+    <button (click)="scrollTop(start)" mat-button class="first-section">
+        <p #top>
             <i class="fas fa-arrow-up"></i>
             Back to Top of Page
         </p>

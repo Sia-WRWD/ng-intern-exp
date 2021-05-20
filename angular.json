@@ -34,8 +34,7 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/@fortawesome/fontawesome-free/js/all.js",
-              "src/assets/js/scroll.js"
+              "node_modules/@fortawesome/fontawesome-free/js/all.js"
             ]
           },
           "configurations": {

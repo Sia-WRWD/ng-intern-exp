@@ -5,7 +5,7 @@
 .admins {
     text-align: center;
     .admin {
-        padding-top: 30px;
+        padding-top: 90px;
         padding-bottom: 90px;
         background: linear-gradient(to top right, black, transparent, grey, transparent, black);
         .pp {
@@ -35,14 +35,61 @@
                 }
             }
         }
-        #next-section {
-            position: fixed;
+        .next-section-1 {
+            position: absolute;
             width: 50px;
             height: 50px;
-            right: 80%;
+            right: 92%;
             top: 90%;
             background: #fff;
-            z-index: 1;
+            .fa-arrow-down {
+                font-size: 32px;
+            }
+            &:hover {
+                background: black;
+                color: yellow;
+                transition: 0.5s ease;
+            }
+        }
+        .next-section-2 {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            right: 92%;
+            top: 200%;
+            background: #fff;
+            .fa-arrow-down {
+                font-size: 32px;
+            }
+            &:hover {
+                background: black;
+                color: yellow;
+                transition: 0.5s ease;
+            }
+        }
+        .next-section-3 {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            right: 92%;
+            top: 300%;
+            background: #fff;
+            .fa-arrow-down {
+                font-size: 32px;
+            }
+            &:hover {
+                background: black;
+                color: yellow;
+                transition: 0.5s ease;
+            }
+        }
+        .next-section-4 {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            right: 92%;
+            top: 400%;
+            background: #fff;
             .fa-arrow-down {
                 font-size: 32px;
             }
@@ -59,13 +106,12 @@
         position: sticky;
         background: black;
         color: yellow;
-        z-index: 0;
         border-radius: 0%;
         p {
             margin-top: 15px;
             visibility: hidden;
             font-size: 16px;
-            font-weight: bold;
+            font-weight: bold;  
             font-style: italic;
             .fas, .fa-arrow-up {
                 visibility: visible;
