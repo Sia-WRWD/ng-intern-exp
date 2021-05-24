@@ -1,1 +1,28 @@
-<p>contact-us works!</p>
+<div class="center-content">
+    <mat-card class="example-card">
+        <mat-card-title>Problems? Talk to Us About It! <mat-icon matSuffix>message</mat-icon></mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="contactForm" *ngIf="!submitted" (ngSubmit)="onSubmit()" novalidate>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Username</mat-label>
+                    <input matInput formControlName="name" [(ngModel)]="contactModel.name" placeholder="What's Your Username?" value="">
+                    <mat-icon matSuffix>perm_identity</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" [(ngModel)]="contactModel.email" placeholder="What's Your Email?">
+                    <mat-icon matSuffix>vpn_key</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Issues/ Recommendations</mat-label>
+                    <textarea matInput formControlName="comment" [(ngModel)]="contactModel.comment" placeholder="What Would You Like to Tell Us?"></textarea>
+                    <mat-icon matSuffix>description</mat-icon>
+                </mat-form-field>
+
+                <button mat-button class="btnSubmit">Submit</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

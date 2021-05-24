@@ -5,7 +5,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 const routes: Routes = [
   {
-    path: 'Home',
+    path: 'Admin/Home',
     canActivate: [AuthGuard],
     loadChildren: () => import('src/app/modules/navigation/navigation.module').then(m => m.NavigationModule)
   },

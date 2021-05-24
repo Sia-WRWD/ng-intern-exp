@@ -1,0 +1,44 @@
+    .landing-content {
+    text-align: center;
+    padding-top: 30px;
+    width: 100%;
+    mat-card-content {
+        mat-card-title {
+        font-size: 50px;
+        color: turquoise;
+        font-weight: bold;
+        }
+        .img {
+        margin: 10px 0px;
+        width: 350px;
+        height: 400px;
+        }
+        mat-card-subtitle {
+        font-weight: bold;
+        font-style: italic;
+        font-size: 20px;
+        color: #fff;
+        line-height: 1.5;
+        }
+        mat-card-actions {
+        button {
+            margin: 10px 0px;
+            border-radius: 5%;
+            border: 5px solid #fff;
+            font-weight: bold;
+            font-size: 16px;
+            background: black;
+            color: #fff;
+            &:hover {
+            transition: 0.5s ease;
+            border: 5px solid yellowgreen;
+            color: yellowgreen;
+            }
+        }
+        }
+    }
+    }
+
+  
+
+  

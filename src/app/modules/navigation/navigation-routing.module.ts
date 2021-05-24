@@ -7,7 +7,7 @@ import { NavComponent } from './components/nav/nav.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'Admin/Home',
     component: NavComponent,
     children: [
       { path: 'Dashboard', component: DashboardComponent },

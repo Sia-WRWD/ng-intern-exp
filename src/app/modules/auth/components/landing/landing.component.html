@@ -1,7 +1,7 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
         [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-        <mat-toolbar><span routerLink="">A I E</span></mat-toolbar>
+        <mat-toolbar><span routerLink="/Home">A I E</span></mat-toolbar>
         <mat-nav-list>
             <a mat-list-item routerLink="/View-Intern-Experience">Internship Experience</a>
             <a mat-list-item routerLink="/About-Us">About Us</a>
@@ -17,26 +17,10 @@
                 <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
             </button>
             <div class="logsign">
-                <button mat-button class="signbtn" routerLink="/Register">Register</button>
                 <button mat-button class="logbtn" routerLink="/Login">Login</button>
             </div>
         </mat-toolbar>
         <!-- Add Content Here -->
-        <div class="landing-content">
-            <mat-card-content>
-                <mat-card-title>Welcome!</mat-card-title><br>
-                <img mat-card-sm-image src="../../../../../assets/landing-img.PNG" alt="landing-img" class="img"><br>
-                <mat-card-subtitle>Share your Internship Experience with others or viewing others' Internship
-                    Experience,
-                    <br>
-                    to allow yourself to be benefitting others and yourself when choosing a company to intern at
-                    in the future!
-                </mat-card-subtitle><br>
-                <mat-card-actions>
-                    <button mat-button routerLink="">Share/ View Internship Experience</button>
-                </mat-card-actions>
-            </mat-card-content>
-        </div>
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

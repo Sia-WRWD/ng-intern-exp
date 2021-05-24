@@ -17,18 +17,36 @@
             }
         }
         .quote {
-            color:black;
+            color:#fff;
         }
         .socials {
             display: inline-flex;
             li {
                 list-style: none;
                 padding: 10px 20px;
-                .fa-github, .fa-steam, .fa-twitch, .fa-reddit {
+                .fa-github, .fa-steam, .fa-reddit {
                     height: 50px;
                     width: 50px;
                     text-decoration: none;
-                    color: black;
+                    color: #fff;
+                    &:hover {
+                        color: gold;
+                        background: black;
+                        border-radius: 50%;
+                        transition: 0.5s ease;
+                    }
+                }
+                .fa-twitch {
+                    height: 50px;
+                    width: 50px;
+                    text-decoration: none;
+                    color: #fff;
+                    &:hover {
+                        color: gold;
+                        background: black;
+                        border-radius: 10%;
+                        transition: 0.5s ease;
+                    }
                 }
                 .fab {
                     box-shadow: 10px black;
@@ -55,11 +73,12 @@
             }
             &:hover {
                 visibility: visible;
+                transition: 0.5s ease-in-out;
             }
         }
         &:hover {
-            background: #fff;
-            color: black;
+            color: yellowgreen;
+            font-weight: bold;
             transition: 0.5s ease;
         }
     }
