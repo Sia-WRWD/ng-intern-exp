@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ContactService } from 'src/app/contact.service';
+import { ContactService } from 'src/app/services/contact.service';
 import { contactDetails } from 'src/app/shared/contact';
 
 @Component({

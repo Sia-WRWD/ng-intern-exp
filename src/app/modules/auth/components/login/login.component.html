@@ -3,48 +3,58 @@
         <mat-card-content>
             <mat-tab-group mat-align-tabs="start">
                 <mat-tab label="Login">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Username</mat-label>
-                        <input matInput placeholder="Username" value="">
-                        <mat-icon matSuffix>perm_identity</mat-icon>
-                    </mat-form-field>
+                    <form [formGroup]="loginForm" *ngIf="!submitted" (ngSubmit)="OnLoginSubmit()" novalidate>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Username</mat-label>
+                            <input matInput formControlName="log_username" [(ngModel)]="loginModel.log_username" placeholder="Username" value="" required>
+                            <mat-icon matSuffix>perm_identity</mat-icon>
+                        </mat-form-field>
 
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Password</mat-label>
-                        <input matInput placeholder="Password">
-                        <mat-icon matSuffix>vpn_key</mat-icon>
-                    </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Password</mat-label>
+                            <input matInput formControlName="log_password" [(ngModel)]="loginModel.log_password" placeholder="Password" value="" required>
+                            <mat-icon matSuffix>vpn_key</mat-icon>
+                        </mat-form-field>
 
-                    <button class="mat-button" mat-button color="primary">Login</button>
+                        <button class="mat-button" mat-button color="primary">Login</button>
+                    </form>
                 </mat-tab>
 
                 <mat-tab label="Register">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Username</mat-label>
-                        <input matInput placeholder="Username" value="">
-                        <mat-icon matSuffix>perm_identity</mat-icon>
-                    </mat-form-field>
+                    <form [formGroup]="registrationForm" *ngIf="!submitted" (ngSubmit)="onRegistrationSubmit()" novalidate>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Username</mat-label>
+                            <input matInput formControlName="reg_username" [(ngModel)]="registrationModel.reg_username" placeholder="Username" value="" required>
+                            <mat-icon matSuffix>perm_identity</mat-icon>
+                        </mat-form-field>
 
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Email</mat-label>
-                        <input matInput placeholder="Email" value="">
-                        <mat-icon matSuffix>email</mat-icon>
-                    </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Name</mat-label>
+                            <input matInput formControlName="reg_name" [(ngModel)]="registrationModel.reg_name" placeholder="Name" value="" required>
+                            <mat-icon matSuffix>perm_identity</mat-icon>
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="reg_email" [(ngModel)]="registrationModel.reg_email" placeholder="Email" value="" required>
+                            <mat-icon matSuffix>email</mat-icon>
+                        </mat-form-field>
 
 
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Password</mat-label>
-                        <input matInput placeholder="Password">
-                        <mat-icon matSuffix>vpn_key</mat-icon>
-                    </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Password</mat-label>
+                            <input matInput formControlName="reg_password" [(ngModel)]="registrationModel.reg_password" placeholder="Password" value="" required>
+                            <mat-icon matSuffix>vpn_key</mat-icon>
+                        </mat-form-field>
 
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Repeat Password</mat-label>
-                        <input matInput placeholder="Repeat Password">
-                        <mat-icon matSuffix>vpn_key</mat-icon>
-                    </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Repeat Password</mat-label>
+                            <input matInput formControlName="reg_re_password" [(ngModel)]="registrationModel.reg_rep_password" placeholder="Repeat Password" value="" required>
+                            <mat-icon matSuffix>vpn_key</mat-icon>
+                        </mat-form-field>
 
-                    <button class="mat-button" mat-button color="primary">Register</button>
+                        <button class="mat-button" mat-button color="primary">Register</button>
+                    </form>
                 </mat-tab>
 
             </mat-tab-group>
