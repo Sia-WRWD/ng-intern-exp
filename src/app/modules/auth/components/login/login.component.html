@@ -3,7 +3,7 @@
         <mat-card-content>
             <mat-tab-group mat-align-tabs="start">
                 <mat-tab label="Login">
-                    <form [formGroup]="loginForm" *ngIf="!submitted" (ngSubmit)="OnLoginSubmit()" novalidate>
+                    <form [formGroup]="loginForm" *ngIf="!submitted" (ngSubmit)="onLoginSubmit()" novalidate>
                         <mat-form-field class="example-full-width">
                             <mat-label>Username</mat-label>
                             <input matInput formControlName="log_username" [(ngModel)]="loginModel.log_username" placeholder="Username" value="" required>

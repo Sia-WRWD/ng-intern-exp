@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 import { RegistrationService } from 'src/app/services/registration.service';
 import { loginDetails } from 'src/app/shared/login';
 import { registrationDetails } from 'src/app/shared/registration';
@@ -19,9 +20,7 @@ export class LoginComponent implements OnInit {
   registrationModel = new registrationDetails();
   loginModel = new loginDetails();
 
-
-
-  constructor(private fb: FormBuilder, private _registrationService: RegistrationService, private router: Router) { }
+  constructor(private fb: FormBuilder, private _registrationService: RegistrationService, private _loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
     this.initializeRegistrationForm();
@@ -42,7 +41,7 @@ export class LoginComponent implements OnInit {
   onRegistrationSubmit():void {
     console.log(this.registrationForm);
     this.submitted = true;
-    this._registrationService.enroll(this.registrationModel)
+    this._registrationService.register(this.registrationModel)
       .subscribe(
         data => console.log('Success!', data),
         error => console.log('Failed!', error)
@@ -62,5 +61,11 @@ export class LoginComponent implements OnInit {
   onLoginSubmit(): void {
     console.log(this.loginForm);
     this.submitted = true;
+    this._loginService.login(this.loginModel)
+      .subscribe(
+        data => console.log('Success!', data),
+        error => console.log('Failed!', error)
+      )
+      this.router.navigate(['/Home']);
   }
 }
