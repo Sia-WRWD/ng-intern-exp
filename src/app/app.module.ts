@@ -11,11 +11,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AuthModule } from './modules/auth/auth.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +24,7 @@ import { AuthModule } from './modules/auth/auth.module';
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
-    AuthModule
+    AuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

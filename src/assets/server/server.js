@@ -3,7 +3,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var mysql = require('mysql');
-var con = mysql.createConnection({
+var pool = mysql.createPool({
+    connectionLimit: 20,
     host: "localhost",
     user: "testing",
     password: "Ilovedonuts123",
@@ -32,68 +33,185 @@ app.post('/contact', function (req, res) {
     var contact_email = req.body.email;
     var contact_comment = req.body.comment;
 
-    con.connect(function (err) {
+    pool.getConnection(function (err, connection) {
         if (err) throw err;
         console.log("Connected to Contact Database");
 
         var sql = "INSERT INTO contact (contact_name, contact_email, contact_comment) VALUES ('" + contact_name + "', '" + contact_email + "','" + contact_comment + "')";
         console.log(sql);
-        con.query(sql, function (err, result) {
+        connection.query(sql, function (err, result) {
 
             console.log(result);
 
-            if (err) throw err;
-            console.log("Contact Request Received!");
+            if (err) {
+                connection.release();
+                throw err;
+            } else {
+                console.log("Contact Request Received!");
+                connection.release();
+            }
         });
     });
 });
 
 app.post('/registration', async function (req, res, next) {
+
     console.log(req.body);
     res.status(200).send({ message: "Registration Data Received!" });
-    try {
-        let { reg_username, reg_name, reg_email, reg_password } = req.body;
-        const hashed_password = md5(reg_password.toString())
-        const checkUsername = `SELECT user_username FROM user WHERE user_username = ?`;
-        con.query(checkUsername, [reg_username], (err, result, fields) => {
-            if (!result.length) {
-                const sql = `INSERT INTO user (user_name, user_email, user_username, user_password) VALUES (?, ?, ?, ?)`
-                con.query(
-                    sql, [reg_name, reg_email, reg_username, hashed_password],
-                    (err, result, fields) => {
-                        if (err) {
-                            res.send({ status: 0, data: err });
-                        } else {
-                            console.log("Successfully Registered!");
-                        }
-                    })
-            }
-        });
-    } catch (error) {
-        res.send({ status: 0, error: error });
-    }
+
+    pool.getConnection(function (err, connection) {
+        if (err) throw err;
+        try {
+            let { reg_username, reg_name, reg_email, reg_password } = req.body;
+            const hashed_password = md5(reg_password.toString())
+            const checkUsername = `SELECT user_username FROM user WHERE user_username = ?`;
+            connection.query(checkUsername, [reg_username], (err, result, fields) => {
+                if (!result.length) {
+                    const sql = `INSERT INTO user (user_name, user_email, user_username, user_password) VALUES (?, ?, ?, ?)`
+                    con.query(
+                        sql, [reg_name, reg_email, reg_username, hashed_password],
+                        (err, result, fields) => {
+                            if (err) {
+                                connection.release();
+                                res.send({ status: 0, data: err });
+                            } else {
+                                connection.release();
+                                console.log("Successfully Registered!");
+                            }
+                        })
+                }
+            });
+        } catch (error) {
+            res.send({ status: 0, error: error });
+        }
+    });
 });
 
-app.post('/login', async function(req, res, next) {
+app.post('/login', async function (req, res, next) {
+
     console.log(req.body);
     res.status(200).send({ message: "Login Data Received!" });
-    try {
-        let { log_username, log_password } = req.body;
-        const hashed_password = md5(log_password.toString())
-        const sql = `SELECT * FROM user WHERE user_username = ? AND user_password = ?`
-        con.query(
-            sql, [log_username, hashed_password],
-            function (err, result, fields) {
-                if (err) {
-                    res.send({ status: 0, data: err });
-                } else {
-                    console.log("Successfully Logged In!");
+
+    pool.getConnection(function (err, connection) {
+        if (err) throw err;
+        try {
+            let { log_username, log_password } = req.body;
+            const hashed_password = md5(log_password.toString())
+            const sql = `SELECT * FROM user WHERE user_username = ? AND user_password = ?`
+            connection.query(
+                sql, [log_username, hashed_password],
+                function (err, result, fields) {
+                    if (err) {
+                        connection.release();
+                        res.send({ status: 0, data: err });
+                    } else {
+                        connection.release();
+                        console.log(result);
+                    }
                 }
-            }
-        )
-    } catch (error) {
-        res.send({ status: 0, error: error });
-    }
+            )
+        } catch (error) {
+            res.send({ status: 0, error: error });
+        }
+    });
+});
+
+app.post('/addIe', async function (req, res, next) {
+    console.log(req.body);
+    res.status(200).send({ message: "Internship Experience Add Data Received!" });
+
+    const ie_username = req.body.username;
+    const ie_company = req.body.company;
+    const ie_duration = req.body.duration;
+    const ie_experience = req.body.experience;
+
+    pool.getConnection(function (err, connection) {
+        if (err) throw err;
+        console.log("Connected to the Database!");
+        try {
+            const sql = "INSERT INTO internship_experience (username, company, duration, experience) VALUES (?, ?, ?, ?)";
+
+            pool.query(
+                sql, [ie_username, ie_company, ie_duration, ie_experience],
+                function (err, result, fields) {
+                    if (err) {
+                        connection.release();
+                        res.send({ status: 0, data: err });
+                    } else {
+                        connection.release();
+                        console.log(result);
+                        console.log("Successfully Shared Internship Experience");
+                    }
+                });
+        } catch (error) {
+            res.send({ status: 0, error: error });
+        }
+    });
+});
+
+app.put('/upIe', async function (req, res, next) {
+    console.log(req.body);
+    res.status(200).send({ message: "Internship Experience Update Data Received!" });
+
+    const ie_username = req.body.username;
+    const ie_company = req.body.company;
+    const ie_duration = req.body.duration;
+    const ie_experience = req.body.experience;
+
+    pool.getConnection(function (err, connection) {
+        if (err) throw err;
+        console.log("Connected to the Database!");
+        try {
+            const sql = `UPDATE internship_experience SET company = ?, duration = ?, experience = ? WHERE username = ? `;
+
+            pool.query(
+                sql, [ie_company, ie_duration, ie_experience, ie_username],
+                function (err, result, fields) {
+                    if (err) {
+                        connection.release();
+                        res.send({ status: 0, data: err });
+                    } else {
+                        connection.release();
+                        console.log(result);
+                        console.log(result.affectedRows);
+                        console.log("Successfully Updated Internship Experience");
+                    }
+                });
+        } catch (error) {
+            res.send({ status: 0, error: error });
+        }
+    });
+});
+
+app.post('/delIe', async function (req, res, next) {
+    console.log(req.body);
+    res.status(200).send({ message: "Internship Experience Update Data Received!" });
+
+    const ie_username = req.body.username;
+    const ie_company = req.body.company;
+
+    pool.getConnection(function (err, connection) {
+        if (err) throw err;
+        console.log("Connected to the Database!");
+        try {
+            const sql = "DELETE FROM internship_experience WHERE username = ? AND company = ?";
+
+            pool.query(
+                sql, [ie_username, ie_company],
+                function (err, result, fields) {
+                    if (err) {
+                        connection.release();
+                        res.send({ status: 0, data: err });
+                    } else {
+                        connection.release();
+                        console.log(result);
+                        console.log("Successfully Deleted Internship Experience");
+                    }
+                });
+        } catch (error) {
+            res.send({ status: 0, error: error });
+        }
+    });
 });
 
 app.listen(PORT, function () {

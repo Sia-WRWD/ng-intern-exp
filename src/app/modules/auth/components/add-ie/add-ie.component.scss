@@ -1,0 +1,66 @@
+.main-container {
+    height: auto;
+    overflow:auto;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 30px;
+    .manage-ie {
+        float: right;
+        margin: 10px;
+        button {
+            margin-left: 10px;
+        }
+    }
+    .title {
+        padding-top: 30px;
+        h1 {
+            font-weight: bold;
+            color:#fff;
+            margin-left: 120px;
+        }
+    }
+    mat-card {
+        margin-top: 50px;
+        width: 50vw;
+        margin: auto;
+        background: black;
+        border: 2px solid lime;
+        mat-form-field {
+            textarea {
+                resize: none;
+                height: 150px;
+            }
+        }
+    }
+}
+
+.btnSubmit {
+    font-size: 20px;
+    margin-left: 10px;
+    &:hover{
+        background:#1B1212;
+        color:lime;
+        transition:0.3s ease-in-out;
+    }
+}
+
+mat-label {
+    color: #fff !important;
+}
+
+::ng-deep .mat-focused .mat-form-field-label{
+    color: #fff !important;
+}
+
+::ng-deep .mat-form-field-underline {
+    background-color: #fff !important;
+}
+
+::ng-deep .mat-form-field-ripple {
+    background-color: #fff !important;
+}
+
+::ng-deep .mat-select-value {
+    color: lime !important;
+}
+

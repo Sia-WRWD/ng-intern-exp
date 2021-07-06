@@ -1,0 +1,50 @@
+<div class="main-container">
+    <div class="manage-ie">
+        <button mat-raised-button color="basic" routerLink="/Intern-Exp"><b>Back</b></button>
+    </div>
+    <div class="title">
+        <h1>Manage Your Internship Experience</h1>
+    </div>
+    <mat-card>
+        <ng-container [formGroup]="addIeForm">
+            <mat-form-field appearance="fill" style="width:50vw; color:lime;">
+                <mat-label>Username</mat-label>
+                <input matInput placeholder="Username to Display" [(ngModel)]="addIeModel.username"
+                    formControlName="username" required>
+                <mat-icon matSuffix>person_pin</mat-icon>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill" style="width:50vw; color:lime;">
+                <mat-label>Company</mat-label>
+                <input matInput placeholder="Company Interned at" [(ngModel)]="addIeModel.company"
+                    formControlName="company" required>
+                <mat-icon matSuffix>room</mat-icon>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill" style="width:50vw; color:lime;">
+                <mat-label>Internship Duration</mat-label>
+                <mat-select required formControlName="duration" [(ngModel)]="addIeModel.duration">
+                    <mat-option>Select Your Duration</mat-option>
+                    <mat-option *ngFor="let month of months" [value]="month.name">{{month.name}}</mat-option>
+                </mat-select>
+                <mat-icon matSuffix>date_range</mat-icon>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill" style="width:50vw; color:lime;">
+                <mat-label>Internship Experience</mat-label>
+                <textarea matInput placeholder="Share your Internship Experience" [(ngModel)]="addIeModel.experience"
+                    formControlName="experience" required></textarea>
+                <mat-icon matSuffix>feedback</mat-icon>
+            </mat-form-field>
+            <button mat-flat-button class="btnSubmit" [disabled]="!addIeForm.valid" (click)="addInternExp()">
+                Add
+            </button>
+            <button mat-flat-button class="btnSubmit" [disabled]="!addIeForm.valid" (click)="upInternExp()">
+                Update
+            </button>
+            <button mat-flat-button class="btnSubmit" [disabled]="!addIeForm.valid" (click)="delInternExp()">
+                Delete
+            </button>
+        </ng-container>
+    </mat-card>
+</div>

@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class LandingComponent implements OnInit {
 
+  isLogin: boolean = false;
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -23,4 +25,7 @@ export class LandingComponent implements OnInit {
     this.router.navigate(['/Home']);
   }
 
+  isUserLogin(){
+    
+  }
 }

@@ -1,0 +1,32 @@
+.main-container {
+    text-align: center;
+    .add-ie {
+        float: right;
+        margin: 10px;
+    }
+    .title {
+        padding-top: 30px;
+        h1 {
+            font-weight: bold;
+            color:#fff;
+            margin-left: 40px;
+        }
+    }
+    mat-grid-list {
+        mat-grid-tile {
+            mat-card {
+                background-color: black;
+                color:lime;
+                border: 2px solid lime;
+                margin: 0;
+                mat-card-content {
+                    mat-expansion-panel {
+                        p {
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

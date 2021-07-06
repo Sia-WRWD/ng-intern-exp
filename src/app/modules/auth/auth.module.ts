@@ -10,7 +10,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { InternExperienceComponent } from './components/intern-experience/intern-experience.component';
+import { AddIeComponent } from './components/add-ie/add-ie.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LandingComponent,
     AboutUsComponent,
     ContactUsComponent,
-    HomeComponent
+    HomeComponent,
+    InternExperienceComponent,
+    AddIeComponent,
   ],
   imports: [
     CommonModule,
